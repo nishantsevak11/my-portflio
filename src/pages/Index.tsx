@@ -315,7 +315,7 @@ const Index = () => {
                     className="space-y-6"
                   >
                     <p className="text-lg text-white/80 leading-relaxed">
-                      I'm a passionate software developer with over 7 years of experience building
+                      I'm a passionate software developer  experience building
                       scalable, high-performance applications. My expertise spans the full stack,
                       from frontend interfaces to backend systems and infrastructure.
                     </p>
