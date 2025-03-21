@@ -1,0 +1,196 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 80% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 210 100% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 50 100% 50%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 80%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    @apply font-rajdhani bg-titan-dark text-white overflow-x-hidden;
+  }
+  
+  body {
+    @apply bg-background text-foreground m-0 p-0 min-h-screen overflow-x-hidden;
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron font-bold;
+  }
+  
+  /* Hide default cursor */
+  * {
+    cursor: none !important;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-titan-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-titan-ember rounded-full;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-titan-ember/80;
+  }
+
+  /* Custom Selection */
+  ::selection {
+    @apply bg-titan-ember text-white;
+  }
+  
+  /* Utility classes */
+  .clip-text {
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+  }
+  
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 69, 0, 0.5);
+  }
+  
+  .titan-shadow {
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+  }
+  
+  .electric-shadow {
+    box-shadow: 0 0 20px rgba(0, 127, 255, 0.4);
+  }
+  
+  .glass-effect {
+    background: rgba(18, 18, 18, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .clip-slant {
+    clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+  }
+  
+  .clip-angled {
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  }
+  
+  .metal-gradient {
+    background: linear-gradient(135deg, #36454F 0%, #121212 100%);
+  }
+  
+  .ember-gradient {
+    background: linear-gradient(135deg, #FF4500 0%, #FFD700 100%);
+  }
+  
+  .electric-gradient {
+    background: linear-gradient(135deg, #007FFF 0%, #00FFFF 100%);
+  }
+  
+  /* Animation classes */
+  .scan-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scan-effect::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, rgba(0, 127, 255, 0.6), transparent);
+    animation: scan-line 3s linear infinite;
+  }
+  
+  /* Particle effect container */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(255, 69, 0, 0.8);
+    box-shadow: 0 0 10px 2px rgba(255, 69, 0, 0.4);
+  }
+}
+
+@layer components {
+  .titan-button {
+    @apply relative overflow-hidden font-orbitron font-bold 
+           border-2 border-titan-ember py-3 px-6 
+           transition-all duration-300 hover:border-titan-electric
+           bg-transparent hover:bg-titan-ash
+           before:content-[''] before:absolute before:top-0 before:left-0 
+           before:w-full before:h-full before:bg-titan-ember/20 
+           before:translate-x-[-100%] hover:before:translate-x-0 
+           before:transition-transform before:duration-300 
+           uppercase tracking-wider metal-gradient;
+  }
+  
+  .node-button {
+    @apply relative py-2 px-4 font-orbitron font-semibold uppercase tracking-wider 
+           bg-titan-dark border border-titan-ember hover:border-titan-electric
+           transition-all duration-300 overflow-hidden
+           before:content-[''] before:absolute before:w-[120%] before:h-[120%] before:top-[-10%] before:left-[-10%]
+           before:bg-titan-ember/30 before:rotate-45 before:origin-center
+           before:translate-x-[-100%] hover:before:translate-x-[100%]
+           before:transition-transform before:duration-500;
+  }
+  
+  .glow-card {
+    @apply relative bg-titan-ash border border-titan-ember/40 
+           transition-all duration-500 hover:border-titan-ember
+           p-6 rounded-sm overflow-hidden shadow-lg
+           hover:shadow-titan-ember/20 hover:shadow-lg;
+  }
+  
+  .forge-text {
+    @apply bg-gradient-to-r from-titan-molten to-titan-ember bg-clip-text text-transparent 
+           font-orbitron font-bold;
+  }
+}
